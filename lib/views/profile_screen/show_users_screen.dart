@@ -87,6 +87,24 @@ class ShowUserScreen extends StatelessWidget {
                                         text: "${data[index]['address']}",
                                         color: Colors.black87,
                                         size: 16.0),
+                                    Row(
+                                      children: [
+                                        normalText(
+                                            text: "${data[index]['city']},",
+                                            color: Colors.black87,
+                                            size: 16.0),
+                                        5.widthBox,
+                                        normalText(
+                                            text: "${data[index]['state']},",
+                                            color: Colors.black87,
+                                            size: 16.0),
+                                        5.widthBox,
+                                        normalText(
+                                            text: "${data[index]['pincode']}",
+                                            color: Colors.black87,
+                                            size: 16.0),
+                                      ],
+                                    ),
                                   ],
                                 ),
                               )
