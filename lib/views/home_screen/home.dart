@@ -5,6 +5,7 @@ import 'package:emart_seller/views/orders_screen/orders_screen.dart';
 import 'package:emart_seller/views/products_screen/products_screen.dart';
 import 'package:emart_seller/views/profile_screen/profile_screen.dart';
 import 'package:emart_seller/views/widgets/dialogue_box.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class Home extends StatelessWidget {
@@ -37,7 +38,15 @@ class Home extends StatelessWidget {
             barrierDismissible: false,
             context: context,
             builder: (context) => CustomDialogueBox(
-                text: "Are you sure want to quit?", context: context));
+                  text: "Are you sure want to quit?",
+                  context: context,
+                  onPressYes: () {
+                    SystemNavigator.pop();
+                  },
+                  onPressNo: () {
+                    Navigator.pop(context);
+                  },
+                ));
         return false;
       },
       child: Scaffold(

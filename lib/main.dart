@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       title: appname,
       theme: ThemeData(
           appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.transparent,
+        backgroundColor: purpleColor,
         elevation: 0.0,
       )),
       home: const SplashScreen(),

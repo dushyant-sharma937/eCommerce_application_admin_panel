@@ -10,6 +10,8 @@ class HomeController extends GetxController {
 
   var navIndex = 0.obs;
   var username = '';
+  var quantity = 0.obs;
+  var avgRating = (0.0).obs;
 
   getUsername() async {
     var n = await firestore
@@ -22,5 +24,16 @@ class HomeController extends GetxController {
       }
     });
     username = n;
+  }
+
+  getQuantity(data) async {
+    quantity.value = 0;
+    avgRating.value = 0.0;
+    for (int i = 0; i < data.length; i++) {
+      quantity.value += int.parse(data[i]['p_quantity']);
+      avgRating.value += double.parse(data[i]['p_rating']);
+    }
+    double x = avgRating.value / double.parse("${data.length}");
+    avgRating.value = x;
   }
 }

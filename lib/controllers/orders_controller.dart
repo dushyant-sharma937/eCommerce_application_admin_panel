@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_seller/const/const.dart';
+import 'package:emart_seller/views/home_screen/home.dart';
 import 'package:get/get.dart';
 
 class OrdersController extends GetxController {
@@ -21,5 +22,11 @@ class OrdersController extends GetxController {
   changeStatus({title, status, docId}) async {
     var store = firestore.collection(ordersCollection).doc(docId);
     await store.set({title: status}, SetOptions(merge: true));
+  }
+
+  deleteOrders({orderId, context}) async {
+    await firestore.collection(ordersCollection).doc(orderId).delete();
+    Get.offAll(() => const Home());
+    VxToast.show(context, msg: "Order deleted successfully.");
   }
 }

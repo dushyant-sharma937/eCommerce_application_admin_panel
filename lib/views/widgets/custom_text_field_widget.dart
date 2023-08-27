@@ -1,17 +1,20 @@
 import 'package:emart_seller/const/const.dart';
 import 'package:emart_seller/views/widgets/normal_text.dart';
 
-Widget customTextField(
-    {label,
-    hintText,
-    controller,
-    isDesc = false,
-    borderColor = Colors.white,
-    color = Colors.black87}) {
+Widget customTextField({
+  label,
+  hintText,
+  controller,
+  isDesc = false,
+  borderColor = Colors.white,
+  color = Colors.black87,
+  ti = TextInputType.text,
+}) {
   return TextFormField(
     controller: controller,
     obscureText: false,
     maxLines: isDesc ? 4 : 1,
+    keyboardType: ti,
     style: TextStyle(
       color: color,
     ),

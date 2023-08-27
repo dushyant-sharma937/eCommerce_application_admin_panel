@@ -35,57 +35,55 @@ class OrderScreen extends StatelessWidget {
                   physics: const BouncingScrollPhysics(),
                   child: Column(
                     children: List.generate(
-                        data.length,
-                        (index) => Container(
-                              padding: const EdgeInsets.all(4),
-                              child: ListTile(
-                                onTap: () {
-                                  Get.to(() => OrderDetails(
-                                        data: data[index],
-                                      ));
-                                },
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12)),
-                                tileColor: textfieldGrey,
-                                title: boldText(
-                                    text: "${data[index]['order_code']}",
-                                    color: purpleColor),
-                                subtitle: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        const Icon(
-                                          Icons.calendar_month,
-                                          color: fontGrey,
-                                        ),
-                                        10.widthBox,
-                                        normalText(
-                                            text: intl.DateFormat()
-                                                .add_yMd()
-                                                .format(data[index]
-                                                        ['order_date']
-                                                    .toDate()),
-                                            color: Colors.black87),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        const Icon(
-                                          Icons.payment,
-                                          color: fontGrey,
-                                        ),
-                                        10.widthBox,
-                                        boldText(text: "Unpaid", color: red),
-                                      ],
-                                    ),
-                                  ],
-                                ).box.margin(const EdgeInsets.all(8)).make(),
-                                trailing: boldText(
-                                    text: "${data[index]['total_amount']}",
-                                    color: purpleColor,
-                                    size: 16.0),
+                      data.length,
+                      (index) => Padding(
+                        padding: const EdgeInsets.all(4),
+                        child: ListTile(
+                          onTap: () {
+                            Get.to(() => OrderDetails(
+                                  data: data[index],
+                                ));
+                          },
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)),
+                          tileColor: Colors.blueAccent.withOpacity(0.3),
+                          title: boldText(
+                              text: "${data[index]['order_code']}",
+                              color: purpleColor),
+                          subtitle: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.calendar_month,
+                                    color: fontGrey,
+                                  ),
+                                  10.widthBox,
+                                  normalText(
+                                      text: intl.DateFormat().add_yMd().format(
+                                          data[index]['order_date'].toDate()),
+                                      color: Colors.black87),
+                                ],
                               ),
-                            )),
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.payment,
+                                    color: fontGrey,
+                                  ),
+                                  10.widthBox,
+                                  boldText(text: "Unpaid", color: red),
+                                ],
+                              ),
+                            ],
+                          ).box.margin(const EdgeInsets.all(8)).make(),
+                          trailing: boldText(
+                              text: "${data[index]['total_amount']}",
+                              color: purpleColor,
+                              size: 16.0),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               );

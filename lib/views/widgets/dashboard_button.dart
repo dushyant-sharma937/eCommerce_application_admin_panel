@@ -35,7 +35,7 @@ class DashBoardButton extends StatelessWidget {
         .box
         .color(purpleColor)
         .rounded
-        .size(context.screenWidth * 0.4, 80)
+        .size(context.screenWidth * 0.45, 100)
         .padding(const EdgeInsets.all(8))
         .make();
   }

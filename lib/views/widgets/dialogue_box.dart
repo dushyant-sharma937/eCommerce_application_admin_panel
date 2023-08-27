@@ -1,11 +1,16 @@
 import 'package:emart_seller/const/const.dart';
-import 'package:flutter/services.dart';
 
 class CustomDialogueBox extends StatelessWidget {
   final String text;
   final BuildContext context;
+  final dynamic onPressYes;
+  final dynamic onPressNo;
   const CustomDialogueBox(
-      {super.key, required this.text, required this.context});
+      {super.key,
+      required this.text,
+      required this.context,
+      required this.onPressYes,
+      required this.onPressNo});
 
   @override
   Widget build(BuildContext context) {
@@ -32,15 +37,11 @@ class CustomDialogueBox extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
+                          onPressed: onPressNo,
                           child: "No".text.bold.color(Colors.green).make()),
                       10.widthBox,
                       TextButton(
-                          onPressed: () {
-                            SystemNavigator.pop();
-                          },
+                          onPressed: onPressYes,
                           child: "Yes".text.bold.color(Colors.red).make()),
                     ],
                   ),

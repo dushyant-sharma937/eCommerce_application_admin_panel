@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_seller/const/const.dart';
 import 'package:emart_seller/services/firestore_services.dart';
+import 'package:emart_seller/views/home_screen/home.dart';
 import 'package:emart_seller/views/products_screen/add_product.dart';
 import 'package:emart_seller/views/products_screen/product_detail.dart';
 import 'package:emart_seller/views/widgets/app_bar_widget.dart';
@@ -10,6 +11,7 @@ import 'package:emart_seller/views/widgets/normal_text.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/products_controller.dart';
+import '../widgets/dialogue_box.dart';
 
 class ProductScreen extends StatelessWidget {
   const ProductScreen({super.key});
@@ -126,14 +128,32 @@ class ProductScreen extends StatelessWidget {
                                               }
                                               break;
                                             case 1:
-                                              break;
-                                            case 2:
-                                              controller.isLoading.value = true;
-                                              await controller.removeProduct(
-                                                  data[index].id);
-                                              VxToast.show(context,
-                                                  msg:
-                                                      "Product removed successfully");
+                                              Get.offAll(() => const Home());
+                                              showDialog(
+                                                context: context,
+                                                builder: (context) =>
+                                                    CustomDialogueBox(
+                                                  text:
+                                                      "Are you sure to remove this order",
+                                                  context: context,
+                                                  onPressNo: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  onPressYes: () async {
+                                                    controller.isLoading.value =
+                                                        true;
+                                                    await controller
+                                                        .removeProduct(
+                                                            data[index].id);
+                                                    VxToast.show(context,
+                                                        msg:
+                                                            "Product removed successfully");
+                                                    Navigator.pop(context);
+                                                  },
+                                                ),
+                                                barrierDismissible: false,
+                                              );
+
                                               break;
                                           }
                                         }),

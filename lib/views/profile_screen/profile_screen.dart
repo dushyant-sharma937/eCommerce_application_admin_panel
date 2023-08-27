@@ -4,6 +4,7 @@ import 'package:emart_seller/controllers/auth_controller.dart';
 import 'package:emart_seller/services/firestore_services.dart';
 import 'package:emart_seller/views/messages_screen/messages_screen.dart';
 import 'package:emart_seller/views/profile_screen/edit_profile_screen.dart';
+import 'package:emart_seller/views/profile_screen/show_users_screen.dart';
 import 'package:emart_seller/views/shop_screen/shop_setting.dart';
 import 'package:emart_seller/views/widgets/normal_text.dart';
 import 'package:get/get.dart';
@@ -74,6 +75,9 @@ class ProfileScreen extends StatelessWidget {
                                             data['password'];
                                         Get.to(() =>
                                             EditProfileScreen(data: data));
+                                        break;
+                                      case 3:
+                                        Get.to(() => const ShowUserScreen());
                                         break;
                                     }
                                   },

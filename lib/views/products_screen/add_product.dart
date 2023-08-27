@@ -31,11 +31,17 @@ class AddProductScreen extends StatelessWidget {
                 ? const Center(child: CircularProgressIndicator(color: white))
                 : TextButton(
                     onPressed: () async {
-                      controller.isLoading(true);
-                      await controller.uploadImages();
-                      await controller.uploadProducts(context);
-                      controller.clearAllControllers();
-                      Get.back();
+                      if (controller.pImageList[0] != null) {
+                        controller.isLoading(true);
+                        await controller.uploadImages();
+                        await controller.uploadProducts(context);
+                        controller.clearAllControllers();
+                        Get.back();
+                      } else {
+                        VxToast.show(context,
+                            msg:
+                                "You have to upload an image at box 1 before saving your product.");
+                      }
                     },
                     child: boldText(text: "Save", color: white))
           ],
@@ -61,15 +67,26 @@ class AddProductScreen extends StatelessWidget {
                   hintText: "Tell us something about this product",
                   label: "Description",
                   isDesc: true,
+                  ti: TextInputType.multiline,
                   controller: controller.pdescController,
                 ),
                 20.heightBox,
                 customTextField(
                   borderColor: Colors.black87,
                   color: white,
-                  hintText: "What should be the price of this product",
-                  label: "Price",
+                  hintText: "Enter the discounted price",
+                  label: "Your Price",
+                  ti: TextInputType.number,
                   controller: controller.ppriceController,
+                ),
+                20.heightBox,
+                customTextField(
+                  borderColor: Colors.black87,
+                  color: white,
+                  hintText: "Actual MRP of the product",
+                  label: "Product MRP",
+                  ti: TextInputType.number,
+                  controller: controller.pmrpController,
                 ),
                 20.heightBox,
                 customTextField(
@@ -77,7 +94,17 @@ class AddProductScreen extends StatelessWidget {
                   color: white,
                   hintText: "Enter the quantity of the product you have",
                   label: "Quantity",
+                  ti: TextInputType.number,
                   controller: controller.pquantityController,
+                ),
+                20.heightBox,
+                customTextField(
+                  borderColor: Colors.black87,
+                  color: white,
+                  hintText: "Rating must be between 0 to 5",
+                  label: "Rating",
+                  ti: TextInputType.number,
+                  controller: controller.pratingController,
                 ),
                 20.heightBox,
                 productDropdown(
@@ -106,11 +133,11 @@ class AddProductScreen extends StatelessWidget {
                               controller.pImageList[index],
                               width: 100,
                             ).onTap(() {
-                              controller.pickImagea(index, context);
+                              controller.pickImages(index, context);
                             })
                           : productImage(label: (index + 1).toString())
                               .onTap(() {
-                              controller.pickImagea(index, context);
+                              controller.pickImages(index, context);
                             }),
                     ),
                   ),

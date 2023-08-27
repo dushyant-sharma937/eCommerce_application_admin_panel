@@ -16,7 +16,9 @@ class ProductsController extends GetxController {
   var pnameController = TextEditingController();
   var pdescController = TextEditingController();
   var ppriceController = TextEditingController();
+  var pmrpController = TextEditingController();
   var pquantityController = TextEditingController();
+  var pratingController = TextEditingController();
 
   var categoryList = <String>[].obs;
   var subcategoryList = <String>[].obs;
@@ -50,7 +52,7 @@ class ProductsController extends GetxController {
     }
   }
 
-  pickImagea(index, context) async {
+  pickImages(index, context) async {
     try {
       final img = await ImagePicker()
           .pickImage(source: ImageSource.gallery, imageQuality: 80);
@@ -89,9 +91,12 @@ class ProductsController extends GetxController {
       'p_desc': pdescController.text,
       'p_name': pnameController.text,
       'p_price': ppriceController.text,
+      'p_mrp': pmrpController.text,
       'p_quantity': pquantityController.text,
       'p_seller': Get.find<HomeController>().username,
-      'p_rating': '4.0',
+      'p_rating': (int.parse(pratingController.text) > 5)
+          ? "5"
+          : pratingController.text,
       'vendor_id': currentUser!.uid,
       'featured_id': ''
     });
@@ -128,4 +133,6 @@ class ProductsController extends GetxController {
     ppriceController.clear();
     pquantityController.clear();
   }
+
+  editProducts({prodId}) {}
 }

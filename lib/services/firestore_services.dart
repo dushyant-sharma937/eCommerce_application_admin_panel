@@ -11,7 +11,7 @@ class FirestoreServices {
   static getMessages(uid) {
     return firestore
         .collection(chatCollections)
-        .where('toId', isEqualTo: uid)
+        .where('fromId', isEqualTo: uid)
         .snapshots();
   }
 
@@ -27,5 +27,25 @@ class FirestoreServices {
         .collection(productsCollection)
         .where('vendor_id', isEqualTo: uid)
         .snapshots();
+  }
+
+  static getAllMessages(docId) {
+    return firestore
+        .collection(chatCollections)
+        .doc(docId)
+        .collection(messagesCollections)
+        .orderBy('created_on', descending: true)
+        .snapshots();
+  }
+
+  static getChatMessages() {
+    return firestore
+        .collection(chatCollections)
+        .where('toId', isEqualTo: currentUser!.uid)
+        .snapshots();
+  }
+
+  static getUsers() {
+    return firestore.collection(userCollections).snapshots();
   }
 }

@@ -17,11 +17,9 @@ class ProductDetails extends StatelessWidget {
           },
           icon: const Icon(
             Icons.arrow_back,
-            color: darkGrey,
           ),
         ),
-        title: boldText(
-            text: "${data['p_name']}", color: Colors.black87, size: 16.0),
+        title: boldText(text: "${data['p_name']}", color: white, size: 16.0),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -77,7 +75,13 @@ class ProductDetails extends StatelessWidget {
                     stepInt: false,
                   ),
                   10.heightBox,
-                  boldText(text: "${data['p_price']}", color: red, size: 18.0),
+                  boldText(
+                      text: "Mrp: ${data['p_mrp']}", color: red, size: 14.0),
+                  10.heightBox,
+                  boldText(
+                      text: "Our price: ${data['p_price']}",
+                      color: green,
+                      size: 18.0),
                   10.heightBox,
                   20.heightBox,
                   Row(

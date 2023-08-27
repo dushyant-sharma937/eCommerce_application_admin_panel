@@ -1,6 +1,7 @@
 import 'package:emart_seller/const/const.dart';
 import 'package:emart_seller/controllers/orders_controller.dart';
 import 'package:emart_seller/views/widgets/custom_button.dart';
+import 'package:emart_seller/views/widgets/dialogue_box.dart';
 import 'package:emart_seller/views/widgets/normal_text.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
@@ -37,11 +38,10 @@ class _OrderDetailsState extends State<OrderDetails> {
             },
             icon: const Icon(
               Icons.arrow_back,
-              color: darkGrey,
+              color: white,
             ),
           ),
-          title: boldText(
-              text: "Order Details", color: Colors.black87, size: 16.0),
+          title: boldText(text: "Order Details", color: white, size: 16.0),
         ),
         bottomNavigationBar: Visibility(
           visible: !controller.confirmed.value,
@@ -66,6 +66,7 @@ class _OrderDetailsState extends State<OrderDetails> {
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(
@@ -93,6 +94,18 @@ class _OrderDetailsState extends State<OrderDetails> {
                               activeColor: green,
                               value: controller.confirmed.value,
                               onChanged: (value) {
+                                if (value == false) {
+                                  controller.onDelivery.value = false;
+                                  controller.changeStatus(
+                                      title: "order_on_delivery",
+                                      status: false,
+                                      docId: widget.data.id);
+                                  controller.delivered.value = false;
+                                  controller.changeStatus(
+                                      title: "order_delivered",
+                                      status: false,
+                                      docId: widget.data.id);
+                                }
                                 controller.confirmed.value = value;
                                 controller.changeStatus(
                                     title: "order_confirmed",
@@ -106,6 +119,13 @@ class _OrderDetailsState extends State<OrderDetails> {
                               activeColor: green,
                               value: controller.onDelivery.value,
                               onChanged: (value) {
+                                if (value == false) {
+                                  controller.delivered.value = false;
+                                  controller.changeStatus(
+                                      title: "order_delivered",
+                                      status: false,
+                                      docId: widget.data.id);
+                                }
                                 controller.onDelivery.value = value;
                                 controller.changeStatus(
                                     title: "order_on_delivery",
@@ -119,11 +139,20 @@ class _OrderDetailsState extends State<OrderDetails> {
                               activeColor: green,
                               value: controller.delivered.value,
                               onChanged: (value) {
-                                controller.delivered.value = value;
-                                controller.changeStatus(
-                                    title: "order_delivered",
-                                    status: value,
-                                    docId: widget.data.id);
+                                if (controller.confirmed.value == false ||
+                                    controller.onDelivery.value == false) {
+                                  controller.delivered.value = false;
+                                  controller.changeStatus(
+                                      title: "order_delivered",
+                                      status: false,
+                                      docId: widget.data.id);
+                                } else {
+                                  controller.delivered.value = value;
+                                  controller.changeStatus(
+                                      title: "order_delivered",
+                                      status: value,
+                                      docId: widget.data.id);
+                                }
                               },
                               title: boldText(
                                   text: "Delivered", color: Colors.black87),
@@ -253,10 +282,32 @@ class _OrderDetailsState extends State<OrderDetails> {
                               .make(),
                           20.heightBox,
                         ],
-                      )
+                      ),
                     ],
                   ),
-                )
+                ),
+                MaterialButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) => CustomDialogueBox(
+                              text: "Are you sure to delete this order",
+                              context: context,
+                              onPressNo: () {
+                                Navigator.pop(context);
+                              },
+                              onPressYes: () {
+                                controller.deleteOrders(
+                                    context: context, orderId: widget.data.id);
+                              },
+                            ),
+                        barrierDismissible: false);
+                  },
+                  splashColor: Colors.red,
+                  color: Colors.black38,
+                  child: normalText(
+                      text: "Delete order", color: white, size: 18.0),
+                ),
               ],
             ),
           ),
