@@ -72,7 +72,13 @@ class OrderScreen extends StatelessWidget {
                                     color: fontGrey,
                                   ),
                                   10.widthBox,
-                                  boldText(text: "Unpaid", color: red),
+                                  boldText(
+                                      text: data[index]['order_delivered']
+                                          ? "Completed"
+                                          : "Unpaid",
+                                      color: data[index]['order_delivered']
+                                          ? green
+                                          : red),
                                 ],
                               ),
                             ],

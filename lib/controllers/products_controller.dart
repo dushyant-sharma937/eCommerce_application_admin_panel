@@ -94,7 +94,7 @@ class ProductsController extends GetxController {
       'p_mrp': pmrpController.text,
       'p_quantity': pquantityController.text,
       'p_seller': Get.find<HomeController>().username,
-      'p_rating': (int.parse(pratingController.text) > 5)
+      'p_rating': (double.parse(pratingController.text) > 5.0)
           ? "5"
           : pratingController.text,
       'vendor_id': currentUser!.uid,
@@ -132,6 +132,8 @@ class ProductsController extends GetxController {
     pdescController.clear();
     ppriceController.clear();
     pquantityController.clear();
+    pmrpController.clear();
+    pratingController.clear();
   }
 
   editProducts({prodId}) {}

@@ -4,12 +4,14 @@ import '../../../const/const.dart';
 
 class OrderPlaceDetails extends StatelessWidget {
   final String t1, t2, d1, d2;
+  final dynamic colord1;
   const OrderPlaceDetails({
     super.key,
     required this.t1,
     required this.t2,
     required this.d1,
     required this.d2,
+    this.colord1 = Colors.red,
   });
 
   @override
@@ -25,7 +27,7 @@ class OrderPlaceDetails extends StatelessWidget {
               // t1.text.fontFamily(semibold).make(),
               // d1.text.color(Colors.red).fontFamily(semibold).make(),
               boldText(text: t1, color: fontGrey),
-              boldText(text: d1, color: red),
+              boldText(text: d1, color: colord1),
             ],
           ),
           SizedBox(

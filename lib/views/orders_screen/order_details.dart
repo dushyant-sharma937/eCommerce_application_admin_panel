@@ -186,9 +186,13 @@ class _OrderDetailsState extends State<OrderDetails> {
                             d2: "${widget.data['payment_method']}",
                           ),
                           5.heightBox,
-                          const OrderPlaceDetails(
+                          OrderPlaceDetails(
                             t1: "Payment Status ",
-                            d1: "Unpaid",
+                            d1: widget.data['order_delivered']
+                                ? "Completed"
+                                : "Unpaid",
+                            colord1:
+                                widget.data['order_delivered'] ? green : red,
                             t2: "Delivery Status",
                             d2: "Order Placed",
                           ),

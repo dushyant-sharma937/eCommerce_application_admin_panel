@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_seller/const/const.dart';
 import 'package:get/get.dart';
 
@@ -12,6 +13,7 @@ class HomeController extends GetxController {
   var username = '';
   var quantity = 0.obs;
   var avgRating = (0.0).obs;
+  var completedOrdersProfit = 0.obs;
 
   getUsername() async {
     var n = await firestore

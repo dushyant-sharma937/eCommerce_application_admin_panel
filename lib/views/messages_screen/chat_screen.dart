@@ -20,13 +20,9 @@ class ChatScreen extends StatelessWidget {
             },
             icon: const Icon(
               Icons.arrow_back,
-              color: Colors.black87,
+              color: white,
             )),
-        title: "${controller.friendName}"
-            .text
-            .color(Colors.black87)
-            .semiBold
-            .make(),
+        title: "${controller.friendName}".text.white.semiBold.make(),
       ),
       body: Padding(
         padding: const EdgeInsets.all(12),
