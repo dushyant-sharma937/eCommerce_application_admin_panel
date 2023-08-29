@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: purpleColor,
       body: Center(
-        child: boldText(text: "Emart-Seller Application", size: 22.0),
+        child: boldText(text: "Anik Traders Admin Panel", size: 22.0),
       ),
     );
   }

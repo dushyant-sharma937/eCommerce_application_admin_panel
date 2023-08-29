@@ -1,4 +1,4 @@
-const appname = "eMart Seller App",
+const appname = "Anik Admin Panel",
     login = "Login",
     welcome = "Hi, Welcome to",
     email = "Email",
@@ -23,8 +23,7 @@ const appname = "eMart Seller App",
     remove = "Remove",
     edit = "Edit",
     chats = "Chats",
-    anyProblem = "In case of any difficulty, contact administration",
-    credit = "@Dushyant Sharma";
+    anyProblem = "In case of any difficulty, contact administration";
 
 // profile strings
 const nameHint = "eg. Vendor Name",
