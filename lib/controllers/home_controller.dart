@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_seller/const/const.dart';
 import 'package:get/get.dart';
 
