@@ -1,74 +1,83 @@
 {
     "categories": [
         {
-            "name": "Women Dress",
+            "name": "Fruits & Vegetables",
             "subcategory": [
-                "Wedding & Event",
-                "Tops & Sets",
-                "Watches"
+                "Vegetables",
+                "Fruits"
             ]
         },
         {
-            "name": "Men Clothing & Fashion",
-            "subcategory": [
-                "Outwear & Jackets",
-                "Formal Dress",
-                "Accessories"
+            "name": "Diary & Bakery",
+            "subcategory":[
+                "Dairy", 
+                "Breads & Buns",
+                "Cookies"
             ]
         },
         {
-            "name": "Computer & Accessories",
+            "name": "Staples",
             "subcategory": [
-                "Laptop",
-                "Gaming PC",
-                "Official Equipment"
+                "Flours",
+                "Pulses",
+                "Rice & Rics Products",
+                "Spices",
+                "Dry Fruits",
+                "Oils"
             ]
         },
         {
-            "name": "Automobile",
+            "name": "Snacks & Branded Foods",
             "subcategory": [
-                "Cars",
-                "Bikes"
+                "Biscuits",
+                "Noodles & Pasta",
+                "Namkeens",
+                "Chocolate & Candies",
+                "Ketchup & Sauces",
+                "Sweets",
+                "Pickles & Chutney"
             ]
         },
         {
-            "name": "Kids & Toys",
+            "name": "Beverages",
             "subcategory": [
-                "Shoes & Bags",
-                "Baby Clothing",
-                "Girls Toys"
+                "Tea",
+                "Coffee",
+                "Soft and Cold Drinks"
             ]
         },
         {
-            "name": "Sports",
+            "name": "Personal Care",
             "subcategory": [
-                "Cycling",
-                "Sneakers",
-                "Swimming"
+                "Hair Care",
+                "Skin Care",
+                "Hand Wash & Body Wash",
+                "Deodrants",
+                "Makeup",
+                "Feminine Hygiene"
             ]
         },
         {
-            "name": "Jewelery",
+            "name": "Home Care",
             "subcategory": [
-                "Necklace",
-                "Gold",
-                "Earing"
+                "Detergents",
+                "Dishwash",
+                "Cleaners",
+                "Freshners & Repellents"
             ]
         },
         {
-            "name": "Cellphone & Tab",
+            "name": "Venom Products",
             "subcategory": [
-                "Smartphone",
-                "Tablets",
-                "Accessories"
+                "Venom T-shirts",
+                "Venom Perfumes",
+                "Venom Watches"
             ]
         },
         {
-            "name": "Furniture",
+            "name": "Others",
             "subcategory": [
-                "Sofa",
-                "Bed",
-                "Home Textile"
+                "Others"
             ]
         }
     ]
